@@ -1,0 +1,32 @@
+{
+  "name": "plantbasednews",
+  "version": "1.0.0",
+  "description": "A simple app that scrapes Vegan news from the web and allows users to read and comment on articles.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reesefairbanks/plantbasedNews.git"
+  },
+  "keywords": [
+    "Express"
+  ],
+  "author": "Reese Fairbanks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reesefairbanks/plantbasedNews/issues"
+  },
+  "homepage": "https://github.com/reesefairbanks/plantbasedNews#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^5.4.20",
+    "morgan": "^1.9.1",
+    "request": "^2.88.0"
+  }
+}
