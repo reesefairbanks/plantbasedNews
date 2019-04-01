@@ -4,7 +4,7 @@ const path = require("path");
 const request = require("request");
 const cheerio = require("cheerio");
 
-let Note = require("../models/Comment.js");
+let Comment = require("../models/Comment.js");
 let Article = require("../models/Article.js");
 
 router.get("/", function(req, res) {
@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
 });
 
 router.get("/scrape", function(req, res) {
-    request("https://www.plantbasednews.org", function(error, response, html) {
+    request("http://www.plantbasednews.org", function(error, response, html) {
         let $ = cheerio.load(html);
         let titlesArray = [];
 
@@ -79,7 +79,7 @@ router.get("/articles-json", function(req, res) {
         }
     });
 });
-
+//remove all articles
 router.get("/clearAll", function(req, res) {
     Article.remove({}, function(err, doc) {
         if (err) {

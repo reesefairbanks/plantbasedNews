@@ -19,15 +19,17 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 //const db = require("./models");
 //Apps display PORT
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 //Initialize Express
 const app = express();
 
 app.use(logger("dev"));
 
-//Parsing the request body as JSON
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(
+    bodyParser.urlencoded({
+        extended: false
+    })
+);
 
 //Make the public folder static
 app.use(express.static("public"));
@@ -48,6 +50,6 @@ app.set("view engine", "handlebars");
 
 
 //Start server
-app.listen(PORT, function() {
-    console.log("App running on port " + PORT + "!");
+app.listen(port, function() {
+    console.log("Listening on PORT " + port + "!");
   });
