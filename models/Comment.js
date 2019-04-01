@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 //Reference of moongoose Schema
 let Schema = mongoose.Schema;
 
-let NoteSchema = new Schema({
+let CommentSchema = new Schema({
     name: {
         type: String,
     },
@@ -12,6 +12,6 @@ let NoteSchema = new Schema({
     },
 });
 //Saving ArticleSchema to the Article variable
-let Note = mongoose.model("Note", NoteSchema);
+let Comment = mongoose.model("Comment", CommentSchema);
 //Exporting the Article
-module.exports = Note;
+module.exports = Comment;
