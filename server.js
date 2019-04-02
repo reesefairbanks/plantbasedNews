@@ -31,21 +31,27 @@ app.use(
     })
 );
 
-//Make the public folder static
-app.use(express.static("public"));
+//Make the public folder static 
+app.use(express.static(process.cwd() + "/public"));
+//app.use(express.static("public"));
 
 //Connecting to Mongo DB
-mongoose.connect("mongodb://localhost/plantbasedNews", { useNewUrlParser: true });
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/plantbasedNews";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
 const db = mongoose.connection;
 //Handle connection error
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
     console.log("Connected to Mongoose");
 });
-
+//Setting up handlebars
 const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
+
+const routes = require("./controller/controller.js");
+app.use("/", routes);
 
 
 
